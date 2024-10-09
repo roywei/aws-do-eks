@@ -84,8 +84,8 @@ spec:
               #  value: "1"
               #- name: NCCL_IGNORE_DISABLED_P2P
               #  value: "1"
-              #- name: NCCL_NVLS_ENABLE
-              #  value: "0"
+              - name: NCCL_NVLS_ENABLE
+                value: "0"
               command:
                 - bash
                 - -c

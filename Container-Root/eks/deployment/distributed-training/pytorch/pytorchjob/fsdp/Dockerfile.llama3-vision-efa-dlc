@@ -1,0 +1,25 @@
+FROM 763104351884.dkr.ecr.us-west-2.amazonaws.com/pytorch-training:2.4.0-gpu-py311-cu124-ubuntu22.04-ec2
+
+RUN mkdir -p /workspace/
+
+WORKDIR /workspace
+
+RUN echo "Using branch llama-vision ..."
+RUN git clone -b llama-vision https://github.com/roywei/llama-recipes.git 
+
+WORKDIR /workspace/llama-recipes
+
+RUN pip3 install -U pip setuptools
+
+RUN pip3 install huggingface_hub[cli]
+RUN pip3 install -r requirements.txt
+
+RUN pip3 install -e .
+
+RUN pip3 install tabulate
+
+RUN pip3 install protobuf
+
+RUN pip3 install python-etcd
+
+ENV PYTHONPATH="${PYTHONPATH}:/workspace/llama-recipes/src"

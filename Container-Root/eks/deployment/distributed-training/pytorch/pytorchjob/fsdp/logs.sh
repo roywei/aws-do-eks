@@ -2,5 +2,5 @@
 
 . .env
 
-kubetail $JOB_NAME -s 60s
+kubectl logs -f $JOB_NAME 
 
